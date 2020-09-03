@@ -1,0 +1,67 @@
+using System;
+
+namespace Money
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Money mymoney = new Money();
+            Console.WriteLine("Please enter your banknotes nominal");
+            mymoney.first = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter quantaty of banknotes you have");
+            mymoney.second = Convert.ToInt32(Console.ReadLine());
+            mymoney.showmoney();
+            mymoney.nominal();
+
+
+
+
+            Console.ReadKey();
+        }
+
+
+
+
+
+    }
+    class Money
+    {
+        public int first; //номинал купюры
+        public int second; // количество купюры
+        public int First
+        {
+            get { return first; }
+            set { first = value; }
+        }
+        public int Second
+        {
+            get { return second; }
+            set { second = value; }
+        }
+
+        public Money() { }
+        public Money(int first, int second) { First = first; Second = second; }
+
+        public void nominal()
+        {
+
+            Console.WriteLine("How many units you wish to buy?");
+            int units = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter the price per unit");
+            int price = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("you have " + first * second + " manat, you wish to buy goods for " + units * price + " manat");
+            if (first * second < units * price)
+            { Console.WriteLine("We dont have enaugh money you can buy only " + first * second / price + " units"); }
+            else { Console.WriteLine("OK");}
+        }
+        public void showmoney()
+        {
+            Console.WriteLine($"We have {second} banknotes of {first} each");
+        }
+
+
+
+
+    }
+}
